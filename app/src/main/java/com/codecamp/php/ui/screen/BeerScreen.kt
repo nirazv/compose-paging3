@@ -55,7 +55,7 @@ fun BeerTopAppBar() {
 @Composable
 fun BeerContent(paddingValues: PaddingValues, beerPagingFlow: LazyPagingItems<Beer>) {
     Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
-        if (beerPagingFlow.loadState.refresh is LoadState.Loading) {
+        if (beerPagingFlow.loadState.refresh is LoadState.Loading && beerPagingFlow.itemCount < 1) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp), content = {
